@@ -11,9 +11,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show repository contents (debug)
+        run: |
+          echo "Listing workspace files:"
+          ls -la
+          echo "Contents of project root:"
+          ls -la ./
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./
+          allow_empty_commit: true
 
