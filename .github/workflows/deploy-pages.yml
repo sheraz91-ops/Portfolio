@@ -27,7 +27,7 @@ jobs:
       - name: Deploy to gh-pages (JamesIves)
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main
+          branch: gh-pages
           folder: .
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
