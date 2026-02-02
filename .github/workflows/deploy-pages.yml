@@ -17,12 +17,14 @@ jobs:
           ls -la
           echo "Contents of project root:"
           ls -la ./
+          echo "Git status:"
+          git status --short
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to gh-pages (JamesIves)
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./
-          allow_empty_commit: true
+          branch: gh-pages
+          folder: .
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
