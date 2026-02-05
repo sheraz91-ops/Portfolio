@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -15,20 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Show repository contents (debug)
-        run: |
-          echo "Listing workspace files:"
-          ls -la
-          echo "Contents of project root:"
-          ls -la ./
-          echo "Git status:"
-          git status --short
-
-      - name: Deploy to gh-pages (JamesIves)
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: .
-          clean: true
+          clean: false
           token: ${{ secrets.GITHUB_TOKEN }}
-
